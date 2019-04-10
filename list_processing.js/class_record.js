@@ -41,7 +41,7 @@ function generateClassRecordSummary(scores) {
   var classRecords = {
     studentGrades: [],
     exams: [],
-  }
+  };
   classRecords.studentGrades = calculateStudentGrades(scores);
   classRecords.exams = ExamStats(scores);
   return classRecords;
@@ -52,7 +52,7 @@ function calculateStudentGrades(scores) {
   var studentFinalGrades = [];
   Object.keys(scores).forEach(function(student) {
     studentFinalGrades.push(calculateOverallGrade(scores[student]));
-  })
+  });
   return studentFinalGrades;
 }
 
@@ -60,7 +60,7 @@ function calculateStudentGrades(scores) {
 function calculateOverallGrade(student) {
   var averageExamScore = calculateExamAverage(student.scores.exams);
   var totalExerciseScore = calculateTotalExerciseScore(student.scores.exercises);
-  var finalPercentScore = calculateFinalPercentScore(averageExamScore, totalExerciseScore)
+  var finalPercentScore = calculateFinalPercentScore(averageExamScore, totalExerciseScore);
   var letterGrade = calculateLetterGrade(finalPercentScore);
   var returnGrade = `${finalPercentScore} (${letterGrade})`;
   console.log(returnGrade);
@@ -122,9 +122,9 @@ function buildExamArrays(studentScores) {
     var exam = [];
     Object.keys(studentScores).forEach(function(student) {
       exam.push(studentScores[student].scores.exams[i]);
-    })
+    });
     exams.push(exam);
-  }
+  };
   return exams;
 }
 
@@ -141,7 +141,7 @@ function calculateExamStats(exams) {
     maximum = Math.max(...exam);
     stats = {average: average, minimum: minimum, maximum: maximum};
     examStats.push(stats);
-  })
+  });
   return examStats;
 }
 
