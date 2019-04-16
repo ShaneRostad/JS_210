@@ -30,15 +30,16 @@ var longText = 'Four score and seven years ago our fathers brought forth' +
 
 
 function longestSentence(text) {
-  var sentences = text.split('.')
+  var regExp = /\w.*?[.!?]/g
+  var sentences = text.match(regExp);
   var sentenceLengths = getSentenceLengths(sentences);
 
   var longestSentenceLength = Math.max(...sentenceLengths);
   var indexOfLongestSentence = sentenceLengths.indexOf(longestSentenceLength);
-  var longestSentenceString = sentences[indexOfLongestSentence].trim() + '.';
+  var longestSentenceString = sentences[indexOfLongestSentence].trim();
 
   sentences.splice(indexOfLongestSentence, 1);
-  longText = sentences.join('. ').trim();
+  longText = sentences.join(' ').trim();
   console.log(longestSentenceString);
   console.log(`The longest sentence has ${longestSentenceLength} words.`);
 }
